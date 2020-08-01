@@ -1,0 +1,1 @@
+.box{display:grid;grid-template-columns:repeat(auto-fill,minmax(15rem,1fr));grid-gap:.5rem;max-width:75rem;margin:3rem auto}.pic{cursor:pointer}.picimg{width:100%;height:15rem;-o-object-fit:cover;object-fit:cover;border-radius:.2rem}
