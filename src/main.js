@@ -7,6 +7,8 @@ import axios from 'axios'
 import VueAxios from 'vue-axios'
 import vuetify from '../src/plugins/vuetify'
 import { VueMasonryPlugin } from 'vue-masonry'
+import VuePageTransition from 'vue-page-transition'
+import VueParallaxJs from 'vue-parallax-js'
 
 import '@babel/polyfill'
 import 'mutationobserver-shim'
@@ -21,6 +23,8 @@ Vue.config.productionTip = false
 Vue.use(Lightbox)
 Vue.use(VueAxios, axios)
 Vue.use(VueMasonryPlugin)
+Vue.use(VuePageTransition)
+Vue.use(VueParallaxJs)
 
 new Vue({
   router,

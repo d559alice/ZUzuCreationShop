@@ -1,24 +1,21 @@
 <template lang="pug">
-  #search
+  #sort
     #container
-      #searchPosition.row.no-gutters.align-items-end
-        img.searchIcon.col-2.offset-2.p-2.offset-md-5(src="../assets/image/search.svg")
-        .searchWrapper.col-6.py-2.offset-md-3
-          b-input(v-model="search" placeholder="Search product ..." variant="outline-warning")
-      .productWrapper.flex.row.no-gutters
-          .productCard.col-6.col-md-4.col-lg-3(v-for="item in filteredList" v-if="search.length>0 ? !isShow : isShow" )
-            router-link.m-2(:to="{ name: 'Product', params: { id: item._id }}")
-              b-card(:title="item.sortName + '-' + item.productName" :img-src="item.src")
-                b-card-text NT${{item.productPrice}}
-              .producthover
+      .sort
+        .sortName {{id}}
+        #productContainer.flex.row.no-gutters
+          .productCards.col-6.col-md-4.col-lg-3(v-for="product in products" v-if="product.sortName === id")
+              router-link.m-2(:to="{ name: 'Product', params: { id: product._id }}")
+                b-card(:title="product.sortName + '-' + product.productName" :img-src="product.src")
+                  b-card-text NT${{product.productPrice}}
+                .producthover
 </template>
 
 <script>
 export default {
+  name: 'Sort',
   data () {
     return {
-      search: '',
-      isShow: false,
       products: []
     }
   },
@@ -42,24 +39,21 @@ export default {
       })
   },
   computed: {
-    filteredList () {
-      return this.products.filter(product => {
-        const productfilter = product.sortName + product.productName
-        return productfilter.toLowerCase().includes(this.search.toLowerCase())
-      })
+    id () {
+      return this.$route.params.id
     }
   }
 }
 </script>
 
 <style lang="scss">
-#search{
-  .form-control{
-    height: 3rem;
-    border: 0.2rem solid orange;
-    border-radius: 3rem;
+#sort{
+  .sortTitle{
+    width: 100%;
+    background: orange;
+    color: #333;
+    border-radius: 1rem 0 0 0;
   }
-
   a{
     color: #fff;
     display: block;
@@ -123,17 +117,6 @@ export default {
     &::after{
     opacity: 1;
     }
-  }
-
-  @media (max-width: 767px){
-    .form-control{
-    height: 2.5rem;
-    }
-    .card-title{
-    font-size: 1rem;
-    text-align: left;
-    margin-bottom: 1rem;
-  }
   }
 }
 </style>

@@ -4,14 +4,14 @@
       #base
         #base_signin.splits
           p 登入會員即可快速結帳
-          b-button(variant="outline-secondary" @click="changetoregister" :disabled="isdisabled" :class="{active:isactive}") SIGN IN
-        #base_register(class="splits")
+          b-button(variant="outline-warning" @click="changetoregister" :disabled="isdisabled" :class="{active:isactive}") SIGN IN
+        #base_register.splits
           p 加入會員即可訂購
-          b-button(variant="outline-secondary" @click="changetosignin" :disabled="!isdisabled" :class="{active:!isactive}") REGISTER
+          b-button(variant="outline-warning" @click="changetosignin" :disabled="!isdisabled" :class="{active:!isactive}") REGISTER
         .wrapper(:class="{move:ismove}")
           #signin
             b-form.px-4(@submit="submit")
-              h1 Sign in
+              h1 Sign In
               b-form-group.text-left(
                 label-for="input-signin-account"
                 description="帳號長度為 4 - 20 個字"
@@ -22,7 +22,7 @@
                 description="密碼長度為 4 - 20 個字"
                 )
                 b-form-input#input-signin-password(type="password" v-model="passwordSignin" placeholder="Password 會員密碼" required)
-              b-button(type="submit" variant="info" pill) SIGN IN
+              b-button.text-warning(type="submit" variant="dark" pill) SIGN IN
           #register
             b-form.px-4(@submit="submitRegister")
               h1 Register
@@ -36,7 +36,7 @@
                 description="密碼長度為 4 - 20 個字"
                 )
                 b-form-input#input-register-password(type="password" v-model="passwordRegister" placeholder="Password 會員密碼" required)
-              b-button(type="submit" variant="success" pill) SIGN UP
+              b-button.text-warning(type="submit" variant="dark" pill) SIGN UP
 </template>
 
 <script>
@@ -148,11 +148,19 @@ export default {
 </script>
 
 <style lang="scss">
+#login{
+  h1{
+    color: orangered;
+    font-weight: bolder;
+    margin-bottom: 2rem;
+  }
+}
+
 #base{
   width: 100%;
   min-height: 50vh;
   margin:5rem 0;
-  background: rgba($color: #ffffff, $alpha: 0.5);
+  background: rgba($color: #000000, $alpha: 0.8);
   display: table;
   position: relative;
   box-shadow: 0 0 4px rgba(0,0,0,.14), 0 4px 8px rgba(0,0,0,.28);
@@ -203,6 +211,11 @@ transform: translateY(-100%) translateX(0%);
 visibility: visible;
 }
 
+.splits button{
+    font-size: 1.2rem;
+    font-weight: bolder;
+}
+
 @media (max-width: 767px){
   #base{
     display: block;
@@ -220,7 +233,7 @@ visibility: visible;
   .splits button{
     width: 100%;
     border-radius: 0;
-    background: rgb(59, 59, 59);
+    background: rgb(255, 255, 255);
   }
 
   .splits p{

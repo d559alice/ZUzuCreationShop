@@ -1,28 +1,32 @@
 <template lang="pug">
   #homemenu
     a(v-b-toggle href="#example1"  @click.prevent rounded)
-      b-icon.rounded-circle.bg-info.p-2(v-if="icondrop" icon="caret-down-fill" variant="warning" font-scale="2.5" @click="iconselect()")
-      b-icon.rounded-circle.bg-success.p-2(v-else icon="person" variant="dark" font-scale="2.5" @click="iconselect()")
+      b-icon.rounded-circle.p-2(v-if="icondrop" icon="caret-down-fill" variant="warning" font-scale="3" @click="iconselect()")
+      b-icon.rounded-circle.bg-warning.p-2(v-else icon="person" variant="dark" font-scale="3" @click="iconselect()")
     b-collapse(id="example1" visible)
-      router-link(to="/adminsort")
-        b-icon.my-1(icon="search" variant="dark" font-scale="1.5")
+      router-link(to="/search")
+        b-icon.my-1.p-1.bg-danger(icon="search" variant="dark" font-scale="2")
       br
       router-link(to="/member/membercenter")
-        b-icon.my-1(icon="heart" variant="dark" font-scale="1.5")
+        b-icon.my-1.p-1.bg-info(icon="heart" variant="dark" font-scale="2")
       br
-      router-link(to="/adminproduct")
-        b-icon.my-1(icon="cart" variant="dark" font-scale="1.5")
+      router-link.position-relative(to="/cart")
+        b-icon.my-1.p-1.bg-warning(icon="cart" variant="dark" font-scale="2")
+        span.absoluteCart(v-if="cart.length!==0") {{cart.length}}
       br
-      router-link(to="/login" v-if="account.length===0")
-        b-icon.my-1(icon="person" variant="dark" font-scale="1.5")
-      router-link(to="/admin/adminsort" v-else-if="account==='admin1234'")
-        b-icon.my-1(icon="person-check" variant="dark" font-scale="1.5")
+      #login(v-if="account.length===0")
+        router-link(to="/login")
+          b-icon.my-1.p-1.bg-success(icon="person" variant="dark" font-scale="2")
+      #admin(v-else-if="account==='admin1234'")
+        router-link(to="/admin/adminsort")
+          b-icon.my-1.p-1.bg-success(icon="person-check" variant="dark" font-scale="2")
         br
-        b-icon.my-1(icon="box-arrow-up-right" variant="dark" font-scale="1.5" @click="logout")
-      router-link(to="/member/membercenter" v-else)
-        b-icon.my-1(icon="person-check" variant="dark" font-scale="1.5")
+        b-icon.logouticon.my-.p-1.bg-primary(icon="box-arrow-up-right" variant="dark" font-scale="2" @click="logout")
+      #member(v-else)
+        router-link(to="/member/membercenter")
+          b-icon.my-1.p-1.bg-success(icon="person-check" variant="dark" font-scale="2")
         br
-        b-icon.my-1(icon="box-arrow-up-right" variant="dark" font-scale="1.5" @click="logout")
+        b-icon.logouticon.my-1.p-1.bg-primary(icon="box-arrow-up-right" variant="dark" font-scale="2" @click="logout")
 </template>
 
 <script>
@@ -35,6 +39,9 @@ export default {
   computed: {
     account () {
       return this.$store.getters.account
+    },
+    cart () {
+      return this.$store.getters.cart
     }
   },
   methods: {
@@ -74,5 +81,20 @@ export default {
   right: 1rem;
   top: 1rem;
   z-index: 100;
+  .logouticon{
+    cursor: pointer;
+  }
+  .absoluteCart{
+    width: 1.2rem;
+    height: 1.2rem;
+    color: orange;
+    font-size: 0.6rem;
+    position: absolute;
+    text-shadow:  0 0 1px #fff;
+    bottom: -0.2rem;
+    left: -0.6rem;
+    background: #333;
+    border-radius: 50% 50%;
+  }
 }
 </style>

@@ -1,5 +1,9 @@
+*{
+  font-family: '微軟正黑體','Microsoft JhengHei',Arial,Helvetica,sans-serif;
+}
+
 h1{
-  color: rgb(8, 77, 8);
+  color: rgb(0, 0, 0);
 }
 
 #container{
@@ -7,16 +11,18 @@ h1{
   width: 70%;
   margin-top: 3rem;
   margin-bottom: 5rem;
-  min-height: 40vh;
+  min-height: calc(100vh - 452px);
 }
 
 @media (max-width: 767px){
   #container{
     width: 90%;
+    margin-top: 1rem;
+    margin-bottom: 3rem;
+    min-height: calc(100vh - 358px);
   }  
 }
 
 a{
   text-decoration: none !important;
 }
-

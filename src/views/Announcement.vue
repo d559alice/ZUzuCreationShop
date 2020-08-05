@@ -54,24 +54,6 @@ export default {
           img: require('../assets/image/announcement/announcement_201910_01.jpg'),
           detail: '',
           date: '2019/09/27'
-        },
-        {
-          title: '10月份市集公告1',
-          img: require('../assets/image/announcement/announcement_201910_01.jpg'),
-          detail: '',
-          date: '2019/09/27'
-        },
-        {
-          title: '10月份市集公告2',
-          img: require('../assets/image/announcement/announcement_201910_01.jpg'),
-          detail: '',
-          date: '2019/09/27'
-        },
-        {
-          title: '10月份市集公告3',
-          img: require('../assets/image/announcement/announcement_201910_01.jpg'),
-          detail: '',
-          date: '2019/09/27'
         }
       ]
     }
@@ -82,11 +64,29 @@ export default {
 <style lang="scss">
 .card{
   outline:none;
+  box-shadow: 0px 0px 5px #333;
+  border: 0;
 }
 
 .masonrycard{
   width: 31.333%;
   margin: 1%;
+}
+
+.card-body{
+  background: #333;
+  color: #fff;
+}
+
+.modal-content{
+  .modal-title{
+  font-size: 1.8rem;
+  font-weight: bold;
+  }
+
+  h4{
+    margin: 0.5rem 0;
+  }
 }
 
 @media (min-width: 576px) and (max-width: 991.98px) {

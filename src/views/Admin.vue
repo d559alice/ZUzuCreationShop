@@ -2,7 +2,7 @@
   #member
     #container
       #sidebar
-        v-navigation-drawer(v-model="drawer" :expand-on-hover="expandonhover()" permanent)
+        v-navigation-drawer(v-model="drawer" expand-on-hover permanent)
           v-list-item(class="px-2")
             v-list-item-avatar
               v-img(src="https://randomuser.me/api/portraits/men/85.jpg")
@@ -14,7 +14,7 @@
                 v-icon {{ item.icon }}
               v-list-item-content
                 v-list-item-title {{ item.title }}
-      #membercontent(:style="{paddingLeft:contentwidth()}")
+      #membercontent
         router-view
 </template>
 
@@ -24,24 +24,14 @@ export default {
   data () {
     return {
       drawer: true,
-      expandOnHover: true,
       items: [
-        { title: 'SORT', icon: 'mdi-home-city', path: '/admin/adminsort' },
-        { title: 'PRODUCT', icon: 'mdi-heart', path: '/admin/adminproduct' }
-        // { title: '購物清單', icon: 'mdi-cart', path: '/member/membercart' }
+        { title: 'SORT', icon: 'mdi-robot', path: '/admin/adminsort' },
+        { title: 'PRODUCT', icon: 'mdi-rocket-launch', path: '/admin/adminproduct' }
       ]
     }
   },
   props: {
     screenWidth: Number
-  },
-  methods: {
-    expandonhover () {
-      return (this.screenWidth < 768) ? this.expandOnHover : !this.expandOnHover
-    },
-    contentwidth () {
-      return (this.screenWidth < 768) ? '56px' : '256px'
-    }
   },
   computed: {
     account () {
@@ -65,11 +55,14 @@ export default {
   top: 0;
   bottom: 0;
   z-index: 99;
+  width: 150px;
+  pointer-events: none;
 }
 
 #membercontent{
   background: rgba($color: #fff, $alpha: 0.5);
   width: 100%;
   min-height: 50vh;
+  padding-left: 56px;
 }
 </style>

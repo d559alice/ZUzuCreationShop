@@ -3,7 +3,7 @@
     #uploadProduct.row.no-gutters.p-2
       h2.col-12 Uplaod Product
       b-form.col-12.row.no-gutters.justify-content-center(@submit="submitProduct")
-        #fileProduct.col-12.col-md-4.text-left.p-0.mx-1
+        #fileProduct.col-12.col-md-4.text-left.p-0.m-1
           b-form-file(
             v-model="file"
             :state="state"
@@ -15,64 +15,63 @@
             @input="validateFile"
           )
           p.text-danger 僅支援 1MB 以下的圖片
-        b-form-input.col-12.col-md-3.mx-1.p-2(
+        b-form-input.col-12.col-md-3.m-1.p-2(
           v-model="sortName"
           placeholder="sortName"
         )
-        br
-        b-form-input.col-12.col-md-3.mx-1.p-2(
+        b-form-input.col-12.col-md-3.m-1.p-2(
           v-model="productName"
           placeholder="productName"
         )
-        br
-        b-form-input.col-12.col-md-3.mx-1.p-2(
+        b-form-input.col-12.col-md-3.m-1.p-2(
           v-model="productPrice"
           placeholder="productPrice"
         )
-        br
-        b-form-input.col-12.col-md-3.mx-1.p-2(
+        b-form-input.col-12.col-md-3.m-1.p-2(
           v-model="productDescription"
           placeholder="productDescription"
         )
-        br
-        b-form-input.col-12.col-md-3.mx-1.p-2(
+        b-form-input.col-12.col-md-3.m-1.p-2(
           v-model="productStock"
           placeholder="productStock"
         )
-        br
-        #fileButton.col-12.col-md-1.p-0
+        #fileButton.col-12.col-md-1.m-1
           b-button(type="submit" variant="primary") 上傳
-    #productList.row.no-gutters
+    #productList.row.no-gutters.px-2
       h2.col-12 Product List
       b-card-group(deck)
         .productCard.col-12.col-sm-6.col-lg-4.row.no-gutters(v-for="(image, idx) in images" :key="idx")
           b-img.col-12(:src="image.src")
           #productCardBody.col-12.row.no-gutters
             .productCardDetail.col-12
-              span.productCardKeyColor sortName:
+              span sortName:
               b-form-input(v-if="image.edit" v-model="image.model1")
-              span(v-else) {{image.sortName}}
+              p(v-else) {{image.sortName}}
             .productCardDetail.col-12
-              span.productCardKeyColor productName:
+              span productName:
               b-form-input(v-if="image.edit" v-model="image.model2")
-              span(v-else) {{image.productName}}
+              p(v-else) {{image.productName}}
             .productCardDetail.col-12
-              span.productCardKeyColor Description:
+              span Description:
               b-form-input(v-if="image.edit" v-model="image.model4")
-              span(v-else) {{image.productDescription}}
+              p(v-else) {{image.productDescription}}
             .productCardDetail.col-6
-              span.productCardKeyColor Price:
+              span Price:
               b-form-input(v-if="image.edit" v-model="image.model3")
-              span(v-else) ${{image.productPrice}}
+              p(v-else) ${{image.productPrice}}
             .productCardDetail.col-6
-              span.productCardKeyColor Stock:
+              span Stock:
               b-form-input(v-if="image.edit" v-model="image.model5")
-              span(v-else) {{image.productStock}}
+              p(v-else) {{image.productStock}}
             .productCardDetail.col-12.text-center
-              b-btn.mx-1(v-if="image.edit" variant="danger" @click="cancel(image)") 取消
-              b-btn.mx-1(v-else variant="success" @click="edit(image)") 編輯
-              b-btn.mx-1(v-if="image.edit" variant="success" @click="update(image)") 更新
-              b-btn.mx-1(v-else variant="danger"  @click="del(image,idx)") 刪除
+              b-btn.mx-1(v-if="image.edit" variant="danger" @click="cancel(image)")
+                b-icon(icon="reply")
+              b-btn.mx-1(v-else variant="success" @click="edit(image)")
+                b-icon(icon="pencil-square")
+              b-btn.mx-1(v-if="image.edit" variant="success" @click="update(image)")
+                b-icon(icon="file-earmark-check")
+              b-btn.mx-1(v-else variant="danger"  @click="del(image,idx)")
+                b-icon(icon="trash")
 </template>
 
 <script>
@@ -134,7 +133,7 @@ export default {
               productDescription: this.productDescription,
               productStock: this.productStock,
               src: process.env.VUE_APP_APIURL + '/sort/' + response.data.result.productsrc,
-              _id: response.data._id,
+              _id: response.data.result._id,
               edit: false,
               model1: '',
               model2: '',
@@ -222,7 +221,7 @@ export default {
 #adminproduct{
   #uploadProduct{
     background: rgba($color: #fff, $alpha: 0.8);
-    margin-bottom: 4rem;
+    margin-bottom: 1rem;
   }
 
   .productCard{
@@ -232,7 +231,7 @@ export default {
       padding: 0.2rem 0.5rem;
     }
 
-  .productCardKeyColor{
+  span{
     color: rgb(14, 14, 75);
     font-size: 1.2rem;
     font-weight: bolder;
@@ -242,6 +241,9 @@ export default {
     background: rgba($color: #fff, $alpha: 0.5);
     min-height: 340px;
   }
+  }
+  p{
+    margin-bottom: 0;
   }
 }
 </style>

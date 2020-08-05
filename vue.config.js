@@ -1,5 +1,4 @@
 module.exports = {
-  publicPath: './',
   pwa: {
     manifestOptions: {
       name: 'ZUzu',

@@ -3,7 +3,7 @@
     #uploadSort.row.no-gutters.p-2
       h2.col-12 Uplaod Sort
       b-form.col-12.row.no-gutters.justify-content-center(@submit="submitSort")
-        #fileSort.col-12.col-md-4.text-left.p-0.mx-1
+        #fileSort.col-12.col-md-4.text-left.p-0.m-1
           b-form-file(
             v-model="file"
             :state="state"
@@ -15,17 +15,15 @@
             @input="validateFile"
           )
           p.text-danger 僅支援 1MB 以下的圖片
-        b-form-input.col-12.col-md-3.mx-1.p-2(
+        b-form-input.col-12.col-md-3.m-1.p-2(
           v-model="sortTitle"
           placeholder="sortTitle"
         )
-        br
-        b-form-input.col-12.col-md-3.mx-1.p-2(
+        b-form-input.col-12.col-md-3.m-1.p-2(
           v-model="sortName"
           placeholder="sortName"
         )
-        br
-        #fileButton.col-12.col-md-1.p-0
+        #fileButton.col-12.col-md-1.m-1
           b-button(type="submit" variant="primary") 上傳
     #sortList
       h2 Sort List
@@ -46,10 +44,14 @@
               b-form-input(v-if="image.edit" v-model="image.model2")
               span(v-else) {{image.sortName}}
             b-td
-              b-btn.mx-1(v-if="image.edit" variant="danger" @click="cancel(image)") 取消
-              b-btn.mx-1(v-else variant="success" @click="edit(image)") 編輯
-              b-btn.mx-1(v-if="image.edit" variant="success" @click="update(image)") 更新
-              b-btn.mx-1(v-else variant="danger"  @click="del(image,idx)") 刪除
+              b-btn.mx-1(v-if="image.edit" variant="danger" @click="cancel(image)")
+                b-icon(icon="reply")
+              b-btn.mx-1(v-else variant="success" @click="edit(image)")
+                b-icon(icon="pencil-square")
+              b-btn.mx-1(v-if="image.edit" variant="success" @click="update(image)")
+                b-icon(icon="file-earmark-check")
+              b-btn.mx-1(v-else variant="danger"  @click="del(image,idx)")
+                b-icon(icon="trash")
 </template>
 
 <script>
@@ -102,7 +104,7 @@ export default {
               sortTitle: this.sortTitle,
               sortName: this.sortName,
               src: process.env.VUE_APP_APIURL + '/sort/' + response.data.result.sortsrc,
-              _id: response.data._id,
+              _id: response.data.result._id,
               edit: false,
               model1: '',
               model2: ''
@@ -175,7 +177,10 @@ export default {
   }
   #uploadSort{
     background: rgba($color: #fff, $alpha: 0.8);
-    margin-bottom: 4rem;
+    margin-bottom: 1rem;
+  }
+  p{
+    margin-bottom: 0;
   }
 }
 </style>

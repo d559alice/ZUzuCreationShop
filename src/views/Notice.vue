@@ -1,11 +1,11 @@
 <template lang="pug">
   #notice
     #container
-      b-card(no-body style="background:rgba(255,255,255,0.5)")
+      b-card(no-body)
         b-tabs(pills card :vertical="tabsRWD()" v-model="tabIndex" style="min-height:60vh")
           b-tab(v-for="(tab,index) in tabs" :title="tab.title" :title-link-class="linkClass(index)")
             b-card-text(v-for="(content,i) in tab.contents")
-              b-button.text-left(block v-b-toggle="'accordion-'+index+i" variant="light") Q{{i+1}}.{{content.question}}
+              b-button.text-left(block v-b-toggle="'accordion-'+index+i" variant="dark") Q{{i+1}}.{{content.question}}
               b-collapse(:id="'accordion-'+index+i")
                 b-card-text.text-left.p-2(v-html="content.answer")
 </template>
@@ -77,9 +77,9 @@ export default {
   methods: {
     linkClass (index) {
       if (this.tabIndex === index) {
-        return ['bg-info', 'text-light']
+        return ['bg-warning', 'text-dark']
       } else {
-        return ['text-info']
+        return ['text-warning']
       }
     },
     tabsRWD () {
@@ -88,3 +88,15 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+#notice{
+  .tabs{
+    background: rgba($color: #ff8800, $alpha: 0.75);
+  }
+  .card-header{
+    background: #000000;
+  }
+}
+
+</style>

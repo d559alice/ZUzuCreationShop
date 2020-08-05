@@ -63,7 +63,6 @@ export default {
   methods: {
     onSubmit (event) {
       event.preventDefault()
-      console.log(this.id)
       this.axios.patch(
         process.env.VUE_APP_APIURL + '/memberprofile/' + this.id, this.form)
         .then(response => {

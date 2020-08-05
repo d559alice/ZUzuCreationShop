@@ -18,6 +18,8 @@
     "vue-easy-lightbox": "^0.14.0",
     "vue-justified-layout": "^0.2.0",
     "vue-masonry": "^0.11.8",
+    "vue-page-transition": "^0.2.2",
+    "vue-parallax-js": "^0.2.3",
     "vue-pwa-asset-generator": "^1.1.2",
     "vue-router": "^3.2.0",
     "vuetify": "^2.3.4",

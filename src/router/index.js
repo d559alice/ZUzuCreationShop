@@ -124,6 +124,24 @@ const routes = [
     }
   },
   {
+    path: '/sort/:id',
+    name: 'Sort',
+    component: () => import(/* webpackChunkName: "sort" */ '../views/Sort.vue'),
+    meta: {
+      login: false,
+      title: 'Sort - ZUzu Creation'
+    }
+  },
+  {
+    path: '/product/:id',
+    name: 'Product',
+    component: () => import(/* webpackChunkName: "product" */ '../views/Product.vue'),
+    meta: {
+      login: false,
+      title: 'Product - ZUzu Creation'
+    }
+  },
+  {
     path: '/shopcard',
     name: 'ShopCard',
     component: () => import(/* webpackChunkName: "shopcard" */ '../views/ShopCard.vue'),
