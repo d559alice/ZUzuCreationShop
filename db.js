@@ -6,7 +6,7 @@ import validator from 'validator'
 dotenv.config()
 
 const Schema = mongoose.Schema
-mongoose.connect(process.env.DBURL, { useUnifiedTopology: true })
+mongoose.connect(process.env.DBURL, { useUnifiedTopology: true, useNewUrlParser: true })
 mongoose.plugin(beautifulUnique)
 
 const userSchema = new Schema({

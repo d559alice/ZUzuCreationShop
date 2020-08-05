@@ -194,6 +194,7 @@ app.delete('/logout', async (req, res) => {
 
 app.get('/heartbeat', async (req, res) => {
   let islogin = false
+  // console.log(req)
   if (req.session.user !== undefined) {
     islogin = true
   }
@@ -227,12 +228,12 @@ app.patch('/memberprofile/:id', async (req, res) => {
 
 // 新增商品類別
 app.post('/sort', async (req, res) => {
-  // 沒有登入
-  // if (req.session.user === undefined) {
-  //   res.status(401)
-  //   res.send({ success: false, message: '未登入' })
-  //   return
-  // }
+  // 設定管理者權限
+  if (req.session.user !== 'admin1234') {
+    res.status(401)
+    res.send({ success: false, message: '無權限' })
+    return
+  }
   if (!req.headers['content-type'].includes('multipart/form-data')) {
     res.status(400)
     res.send({ success: false, message: '格式不符' })
@@ -271,7 +272,7 @@ app.post('/sort', async (req, res) => {
             sortsrc
           }
         )
-        console.log(result)
+        // console.log(result)
         res.status(200)
         res.send({ success: true, message: '', result })
       } catch (error) {
@@ -294,7 +295,7 @@ app.post('/sort', async (req, res) => {
 // 取得商品類別路徑
 app.get('/sort/:name', async (req, res) => {
   if (process.env.FTP === 'false') {
-    console.log('1' + req.params.name)
+    // console.log('1' + req.params.name)
     const path = process.cwd() + '/images/' + req.params.name
     const exists = fs.existsSync(path)
     if (exists) {
@@ -311,17 +312,6 @@ app.get('/sort/:name', async (req, res) => {
 
 // 取得商品類別資料
 app.get('/adminsort', async (req, res) => {
-  // if (req.session.user === undefined) {
-  //   res.status(401)
-  //   res.send({ success: false, message: '未登入' })
-  //   return
-  // }
-  // if (req.session.user !== req.params.user) {
-  //   res.status(403)
-  //   res.send({ success: false, message: '無權限' })
-  //   return
-  // }
-
   try {
     const result = await db.sorts.find()
     res.status(200)
@@ -334,26 +324,19 @@ app.get('/adminsort', async (req, res) => {
 
 // 修改商品類別
 app.patch('/sort/:id', async (req, res) => {
-  // if (!req.headers['content-type'].includes('application/json')) {
-  //   res.status(400)
-  //   res.send({ success: false, message: '格式不符' })
-  //   return
-  // }
-  // 沒有登入
-  // if (!req.session.user) {
-  //   res.status(401)
-  //   res.send({ success: false, message: '無權限' })
-  //   return
-  // }
+  if (!req.headers['content-type'].includes('application/json')) {
+    res.status(400)
+    res.send({ success: false, message: '格式不符' })
+    return
+  }
+  // 設定管理者權限
+  if (req.session.user !== 'admin1234') {
+    res.status(401)
+    res.send({ success: false, message: '無權限' })
+    return
+  }
 
   try {
-    // 檢查相片擁有者是不是本人
-    // let result = await db.files.findById(req.params.id)
-    // if (result.user !== req.session.user) {
-    //   res.status(403)
-    //   res.send({ success: false, message: '無權限' })
-    //   return
-    // }
     // findByIdAndUpdate 預設回傳的是更新前的資料
     // 設定 new true 後會變成回傳新的資料
     const result = await db.sorts.findByIdAndUpdate(req.params.id, req.body, { new: true })
@@ -380,21 +363,14 @@ app.patch('/sort/:id', async (req, res) => {
 
 // 刪除商品類別
 app.delete('/sort/:id', async (req, res) => {
-  // 沒有登入
-  // if (!req.session.user) {
-  //   res.status(401)
-  //   res.send({ success: false, message: '無權限' })
-  //   return
-  // }
+  // 設定管理者權限
+  if (req.session.user !== 'admin1234') {
+    res.status(401)
+    res.send({ success: false, message: '無權限' })
+    return
+  }
 
   try {
-    // 檢查相片擁有者是不是本人
-    // let result = await db.files.findById(req.params.id)
-    // if (result.user !== req.session.user) {
-    //   res.status(403)
-    //   res.send({ success: false, message: '無權限' })
-    //   return
-    // }
     // findByIdAndDelete 預設回傳的是更新前的資料
     // 設定 new true 後會變成回傳新的資料
     const result = await db.sorts.findByIdAndDelete(req.params.id)
@@ -426,12 +402,12 @@ app.delete('/sort/:id', async (req, res) => {
 
 // 新增商品
 app.post('/product', async (req, res) => {
-  // 沒有登入
-  // if (req.session.user === undefined) {
-  //   res.status(401)
-  //   res.send({ success: false, message: '未登入' })
-  //   return
-  // }
+  // 設定管理者權限
+  if (req.session.user !== 'admin1234') {
+    res.status(401)
+    res.send({ success: false, message: '無權限' })
+    return
+  }
   if (!req.headers['content-type'].includes('multipart/form-data')) {
     res.status(400)
     res.send({ success: false, message: '格式不符' })
@@ -495,7 +471,7 @@ app.post('/product', async (req, res) => {
 // 取得商品類別路徑
 app.get('/product/:name', async (req, res) => {
   if (process.env.FTP === 'false') {
-    console.log('2' + req.params.name)
+    // console.log('2' + req.params.name)
     const path = process.cwd() + '/images/' + req.params.name
     const exists = fs.existsSync(path)
     if (exists) {
@@ -512,17 +488,6 @@ app.get('/product/:name', async (req, res) => {
 
 // 取得商品資料
 app.get('/adminproduct', async (req, res) => {
-  // if (req.session.user === undefined) {
-  //   res.status(401)
-  //   res.send({ success: false, message: '未登入' })
-  //   return
-  // }
-  // if (req.session.user !== req.params.user) {
-  //   res.status(403)
-  //   res.send({ success: false, message: '無權限' })
-  //   return
-  // }
-
   try {
     const result = await db.products.find()
     res.status(200)
@@ -540,21 +505,15 @@ app.patch('/product/:id', async (req, res) => {
     res.send({ success: false, message: '格式不符' })
     return
   }
-  // 沒有登入
-  // if (!req.session.user) {
-  //   res.status(401)
-  //   res.send({ success: false, message: '無權限' })
-  //   return
-  // }
+
+  // 設定管理者權限
+  if (req.session.user !== 'admin1234') {
+    res.status(401)
+    res.send({ success: false, message: '無權限' })
+    return
+  }
 
   try {
-    // 檢查相片擁有者是不是本人
-    // let result = await db.files.findById(req.params.id)
-    // if (result.user !== req.session.user) {
-    //   res.status(403)
-    //   res.send({ success: false, message: '無權限' })
-    //   return
-    // }
     // findByIdAndUpdate 預設回傳的是更新前的資料
     // 設定 new true 後會變成回傳新的資料
     const result = await db.products.findByIdAndUpdate(req.params.id, req.body, { new: true })
@@ -581,21 +540,14 @@ app.patch('/product/:id', async (req, res) => {
 
 // 刪除商品
 app.delete('/product/:id', async (req, res) => {
-  // 沒有登入
-  // if (!req.session.user) {
-  //   res.status(401)
-  //   res.send({ success: false, message: '無權限' })
-  //   return
-  // }
+  // 設定管理者權限
+  if (req.session.user !== 'admin1234') {
+    res.status(401)
+    res.send({ success: false, message: '無權限' })
+    return
+  }
 
   try {
-    // 檢查相片擁有者是不是本人
-    // let result = await db.files.findById(req.params.id)
-    // if (result.user !== req.session.user) {
-    //   res.status(403)
-    //   res.send({ success: false, message: '無權限' })
-    //   return
-    // }
     // findByIdAndDelete 預設回傳的是更新前的資料
     // 設定 new true 後會變成回傳新的資料
     const result = await db.products.findByIdAndDelete(req.params.id)
@@ -621,6 +573,24 @@ app.delete('/product/:id', async (req, res) => {
       // 伺服器錯誤
       res.status(500)
       res.send({ success: false, message: '伺服器錯誤' })
+    }
+  }
+})
+
+// 取得商品id
+app.get('/productDetail/:id', async (req, res) => {
+  try {
+    const result = await db.products.findById(req.params.id)
+    console.log(result)
+    res.status(200)
+    res.send({ success: true, message: '', result })
+  } catch (error) {
+    if (error.name === 'CastError') {
+      res.status(404)
+      res.send({ success: false, message: '找不到資料' })
+    } else {
+      res.status(500)
+      res.send({ success: false, message: '伺服器發生錯誤' })
     }
   }
 })
