@@ -229,11 +229,11 @@ app.patch('/memberprofile/:id', async (req, res) => {
 // 新增商品類別
 app.post('/sort', async (req, res) => {
   // 設定管理者權限
-  if (req.session.user !== 'admin1234') {
-    res.status(401)
-    res.send({ success: false, message: '無權限' })
-    return
-  }
+  // if (req.session.user !== 'admin1234') {
+  //   res.status(401)
+  //   res.send({ success: false, message: '無權限' })
+  //   return
+  // }
   if (!req.headers['content-type'].includes('multipart/form-data')) {
     res.status(400)
     res.send({ success: false, message: '格式不符' })
@@ -330,11 +330,11 @@ app.patch('/sort/:id', async (req, res) => {
     return
   }
   // 設定管理者權限
-  if (req.session.user !== 'admin1234') {
-    res.status(401)
-    res.send({ success: false, message: '無權限' })
-    return
-  }
+  // if (req.session.user !== 'admin1234') {
+  //   res.status(401)
+  //   res.send({ success: false, message: '無權限' })
+  //   return
+  // }
 
   try {
     // findByIdAndUpdate 預設回傳的是更新前的資料
@@ -364,11 +364,11 @@ app.patch('/sort/:id', async (req, res) => {
 // 刪除商品類別
 app.delete('/sort/:id', async (req, res) => {
   // 設定管理者權限
-  if (req.session.user !== 'admin1234') {
-    res.status(401)
-    res.send({ success: false, message: '無權限' })
-    return
-  }
+  // if (req.session.user !== 'admin1234') {
+  //   res.status(401)
+  //   res.send({ success: false, message: '無權限' })
+  //   return
+  // }
 
   try {
     // findByIdAndDelete 預設回傳的是更新前的資料
@@ -403,11 +403,11 @@ app.delete('/sort/:id', async (req, res) => {
 // 新增商品
 app.post('/product', async (req, res) => {
   // 設定管理者權限
-  if (req.session.user !== 'admin1234') {
-    res.status(401)
-    res.send({ success: false, message: '無權限' })
-    return
-  }
+  // if (req.session.user !== 'admin1234') {
+  //   res.status(401)
+  //   res.send({ success: false, message: '無權限' })
+  //   return
+  // }
   if (!req.headers['content-type'].includes('multipart/form-data')) {
     res.status(400)
     res.send({ success: false, message: '格式不符' })
@@ -507,11 +507,11 @@ app.patch('/product/:id', async (req, res) => {
   }
 
   // 設定管理者權限
-  if (req.session.user !== 'admin1234') {
-    res.status(401)
-    res.send({ success: false, message: '無權限' })
-    return
-  }
+  // if (req.session.user !== 'admin1234') {
+  //   res.status(401)
+  //   res.send({ success: false, message: '無權限' })
+  //   return
+  // }
 
   try {
     // findByIdAndUpdate 預設回傳的是更新前的資料
@@ -541,11 +541,11 @@ app.patch('/product/:id', async (req, res) => {
 // 刪除商品
 app.delete('/product/:id', async (req, res) => {
   // 設定管理者權限
-  if (req.session.user !== 'admin1234') {
-    res.status(401)
-    res.send({ success: false, message: '無權限' })
-    return
-  }
+  // if (req.session.user !== 'admin1234') {
+  //   res.status(401)
+  //   res.send({ success: false, message: '無權限' })
+  //   return
+  // }
 
   try {
     // findByIdAndDelete 預設回傳的是更新前的資料
