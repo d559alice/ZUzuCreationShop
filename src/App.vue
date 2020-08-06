@@ -70,35 +70,35 @@ export default {
   methods: {
     toggleWelcome () {
       this.isShow = !this.isShow
-    },
-    heartbeat () {
-      this.axios.get(process.env.VUE_APP_APIURL + '/heartbeat')
-        .then(response => {
-          const data = response.data
-          // 如果是登入中
-          if (this.account.length > 0) {
-            // 如果後端登入時間過期
-            if (!data) {
-              alert('登入時效已過')
-              // 前端登出
-              this.$store.commit('logout')
-              // 如果現在不是在首頁，跳到登出後的首頁
-              if (this.$route.path !== '/') {
-                this.$router.push('/')
-              }
-            }
-          }
-        })
-        .catch((error) => {
-          console.log(error)
-          alert('發生錯誤')
-          this.$store.commit('logout')
-          // 如果現在不是在首頁，跳到登出後的首頁
-          if (this.$route.path !== '/') {
-            this.$router.push('/')
-          }
-        })
     }
+    // heartbeat () {
+    //   this.axios.get(process.env.VUE_APP_APIURL + '/heartbeat')
+    //     .then(response => {
+    //       const data = response.data
+    //       // 如果是登入中
+    //       if (this.account.length > 0) {
+    //         // 如果後端登入時間過期
+    //         if (!data) {
+    //           alert('登入時效已過')
+    //           // 前端登出
+    //           this.$store.commit('logout')
+    //           // 如果現在不是在首頁，跳到登出後的首頁
+    //           if (this.$route.path !== '/') {
+    //             this.$router.push('/')
+    //           }
+    //         }
+    //       }
+    //     })
+    //     .catch((error) => {
+    //       console.log(error)
+    //       alert('發生錯誤')
+    //       this.$store.commit('logout')
+    //       // 如果現在不是在首頁，跳到登出後的首頁
+    //       if (this.$route.path !== '/') {
+    //         this.$router.push('/')
+    //       }
+    //     })
+    // }
   },
   mounted () {
     const that = this
@@ -108,10 +108,10 @@ export default {
         that.screenWidth = window.screenWidth
       })()
     }
-    this.heartbeat()
-    setInterval(() => {
-      this.heartbeat()
-    }, 1000 * 5)
+    // this.heartbeat()
+    // setInterval(() => {
+    //   this.heartbeat()
+    // }, 1000 * 5)
   },
   watch: {
     screenWidth (val) {
