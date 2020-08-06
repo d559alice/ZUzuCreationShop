@@ -1,2 +1,0 @@
-(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["search"],{"2d3b":function(t,e,r){"use strict";r.r(e);var n=function(){var t=this,e=t.$createElement,r=t._self._c||e;return r("div",{attrs:{id:"search"}},[r("div",{attrs:{id:"container"}},[r("b-form-input",{attrs:{placeholder:"Search"}})],1)])},a=[],c=r("2877"),s={},i=Object(c["a"])(s,n,a,!1,null,null,null);e["default"]=i.exports}}]);
-//# sourceMappingURL=search.ba145b51.js.map
