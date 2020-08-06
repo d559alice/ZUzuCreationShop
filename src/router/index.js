@@ -142,24 +142,6 @@ const routes = [
     }
   },
   {
-    path: '/shopcard',
-    name: 'ShopCard',
-    component: () => import(/* webpackChunkName: "shopcard" */ '../views/ShopCard.vue'),
-    meta: {
-      login: false,
-      title: 'Shop - ZUzu Creation'
-    }
-  },
-  {
-    path: '/shopproduct',
-    name: 'ShopProduct',
-    component: () => import(/* webpackChunkName: "shopproduct" */ '../views/ShopProduct.vue'),
-    meta: {
-      login: false,
-      title: 'Shop - ZUzu Creation'
-    }
-  },
-  {
     path: '/announcement',
     name: 'Announcement',
     component: () => import(/* webpackChunkName: "announcement" */ '../views/Announcement.vue'),

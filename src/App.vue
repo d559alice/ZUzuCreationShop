@@ -36,15 +36,17 @@
       HomeMenu
       vue-page-transition(name="fade-in-down")
         router-view(:screenWidth="screenWidth")
-      #footer(class="flex row no-gutters justify-content-around")
-        .footer-contact(class="col-6")
+      #footer
+        h5 © 2020 ZUzu Creation Shop. All Rights Reserved.
+        .footer-contact
           h4 Contact us
           b-link(href="http://line.me/ti/p/@zuzucreation" target="_blank")
             img(src="../public/img/line-messenger.svg" width="50px")
-        .footer-connect(class="col-6")
+        .footer-connect
           h4 Follow us
           b-link(href="https://www.instagram.com/accounts/login/?next=/zuzuzuzu_tw/" target="_blank")
             img(src="../public/img/instagram-2-1.svg" width="50px")
+        img.wavefooter(:src="require('./assets/image/wave (1).svg')")
 </template>
 
 <script>
@@ -230,6 +232,31 @@ export default {
   background-image: url("../src/assets/image/wave.svg");
 }
 
+#footer{
+  position: relative;
+  color: orange;
+  h5{
+    position: absolute;
+    font-size: 1.5rem;
+    bottom: 10%;
+    right: 10%;
+  }
+  .footer-contact{
+    position: absolute;
+    bottom: 10%;
+    left: 20%;
+  }
+  .footer-connect{
+    position: absolute;
+    bottom: 10%;
+    left: 10%;
+  }
+}
+
+.logout-point{
+cursor: pointer;
+}
+
 @media (max-width: 767px) {
   #appMain{
     background-size: 380%;
@@ -305,15 +332,33 @@ export default {
       padding: 0 0.2rem;
     }
   }
+  #footer{
+  h4{
+    display: none;
+  }
+  h5{
+    position: absolute;
+    font-size: 0.5rem;
+    bottom: 10%;
+    right: 10%;
+  }
+  .footer-contact{
+    position: absolute;
+    bottom: 15%;
+    left: 20%;
+    img{
+    width: 20px;
+    }
+  }
+  .footer-connect{
+    position: absolute;
+    bottom: 15%;
+    left: 10%;
+    img{
+      width: 20px;
+    }
+  }
+}
 }
 
-#footer{
-  background:rgba($color: rgb(0, 0, 0), $alpha: 0.8);
-  padding: 1rem 0;
-  color: orange;
-}
-
-.logout-point{
-cursor: pointer;
-}
 </style>

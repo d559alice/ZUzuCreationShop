@@ -1,9 +1,10 @@
 <template lang="pug">
   #search
     #container
-      #searchPosition.row.no-gutters.align-items-end
-        img.searchIcon.col-2.offset-2.p-2.offset-md-5(src="../assets/image/search.svg")
-        .searchWrapper.col-6.py-2.offset-md-3
+      #searchPosition.row.no-gutters.align-items-end.justify-content-center
+        .searchWrapper.px-2.mt-5
+          img(src="../assets/image/search.svg" width="50px")
+        .searchWrapper.px-2
           b-input(v-model="search" placeholder="Search product ..." variant="outline-warning")
       .productWrapper.flex.row.no-gutters
           .productCard.col-6.col-md-4.col-lg-3(v-for="item in filteredList" v-if="search.length>0 ? !isShow : isShow" )

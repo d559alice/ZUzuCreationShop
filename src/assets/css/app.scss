@@ -10,16 +10,16 @@ h1{
   margin: auto;
   width: 70%;
   margin-top: 3rem;
-  margin-bottom: 5rem;
-  min-height: calc(100vh - 452px);
+  // margin-bottom: 1rem;
+  min-height: calc(100vh - 420px);
 }
 
 @media (max-width: 767px){
   #container{
     width: 90%;
     margin-top: 1rem;
-    margin-bottom: 3rem;
-    min-height: calc(100vh - 358px);
+    margin-bottom: 1rem;
+    min-height: calc(100vh - 292px);
   }  
 }
 
