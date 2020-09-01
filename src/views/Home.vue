@@ -9,28 +9,6 @@
         .BrandConcept.col-12.col-lg-6.p-5.row.align-items-end
           h1 品牌理念
           h5.text-left Zuzu的風格變化多端，我們使無形的想法具體化，也讓有形的物品抽象化；將生活融入創作中，日常裡看到什麼、聽到什麼、吃到什麼都可以轉換成為軟陶藝術，讓你的生活在小小的耳環上體現，所以就讓我們一起期待ZUzu的原創商品吧！！
-        //- .taiwansvg.col-12.p-0.col-lg-6
-          .taiwan-box
-            img.ear(:src="require('../assets/image/home/ear (1).svg')")
-            img.taiwansvg1(:src="require('../assets/image/home/taiwanearrings_animated.svg')")
-      //- .section01
-        span.col-12.row.no-gutters.align-content-end.text-left
-          .parallaxline
-            v-parallax(src="https://img.51miz.com/preview/element/00/01/06/84/E-1068495-FE3BE6A3.jpg" height="20")
-          .parallaxline
-          .parallaxline
-          .parallaxline
-          .parallaxline
-          .parallaxline
-          h1 品牌理念
-          .parallaxline
-          .parallaxline
-          h5 Zuzu的風格變化多端，我們使無形的想法具體化，也讓有形的物品抽象化；將生活融入創作中，日常裡看到什麼、聽到什麼、吃到什麼都可以轉換成為軟陶藝術，讓你的生活在小小的耳環上體現，所以就讓我們一起期待ZUzu的原創商品吧！！
-          .parallaxline
-          .parallaxline
-          .parallaxline
-          .parallaxline
-          .parallaxline
       br
       br
       .parallaxline
@@ -263,26 +241,22 @@ export default {
   50% { border-color: orange }
 }
 
-@media (max-width: 576px){
-#carousels{
+@media (max-width: 767px){
+.revealBOX{
   .ear{
-  top: 10%;
-  left: 25%;
+    width: 3rem;
+    top: -5%;
+    left: 160%;
   }
   .taiwansvg1{
-    top: 37%;
-    left: -30%;
+    width: 200px;
+    top: 23%;
+    left: 79%;
   }
 }
 .section03{
   position: relative;
   min-height: 500px;
-  .taiwansvg{
-  width: 1000px;
-  position: absolute;
-  top: 0;
-  left: -20%;
-  }
 }
 }
 

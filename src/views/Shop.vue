@@ -93,6 +93,9 @@ export default {
       font-size: 0.8rem;
       font-weight: bold;
     }
+    .nav-link{
+      padding: 0.3rem;
+    }
   }
   }
 
@@ -124,6 +127,12 @@ export default {
       border-radius: 1rem 0;
     }
   }
+
+  .card-body{
+    background: transparent;
+      border-radius: 1rem 0;
+  }
+
   .card-body:hover{
     background: rgba($color: rgb(7, 7, 7), $alpha: 0.7);
       border-radius: 1rem 0;

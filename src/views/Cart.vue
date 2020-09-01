@@ -1,8 +1,7 @@
 <template lang="pug">
   #cart
     #container
-      h1(data-shadow='CART') cart
-      h2.text-left 購物車
+      h2.mb-4 購物車
       b-table-simple
         b-thead
           b-tr

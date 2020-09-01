@@ -94,6 +94,14 @@ export default {
   .tabs{
     background: rgba($color: #ff8800, $alpha: 0.75);
   }
+  .tab-pane{
+    background: rgba($color: #fff, $alpha: 0);
+  }
+
+  .card-text{
+    color: #000000;
+  }
+
   .card-header{
     background: #000000;
   }
